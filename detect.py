@@ -4,8 +4,8 @@ import supervision as sv
 import cvzone
 
 model_face = YOLO("models/yolov8l-face.pt")
-model_cls = YOLO("models/yolo11m-cls-affectnet.pt")
-classes = ['anger', 'contempt', 'disgust', 'fear', 'happy', 'neutral', 'sad', 'surprise']
+model_cls = YOLO("models/yolo11m-cls-affectnet-filtrado-v2.pt")
+classes = ['disgust', 'happy', 'neutral', 'surprise']
 tracker = sv.ByteTrack()
 
 cap = cv2.VideoCapture(0)
@@ -29,7 +29,7 @@ while True:
 
             if len(bbox):
                 # Ajustar as coordenadas do recorte para ser 50% maior em cada dimensão
-                expansion_factor = 1.5
+                expansion_factor = 1
 
                 # Calcula as dimensões do retângulo bounding box original
                 width, height = x3 - x1, x4 - x2
